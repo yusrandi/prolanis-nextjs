@@ -13,7 +13,10 @@ import { Column } from 'primereact/column';
 import YouTube from "react-youtube"
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
-import ReactQuill from 'react-quill';
+// import ReactQuill from 'react-quill';
+import dynamic from 'next/dynamic'
+
+const DynamicQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 const emptyResep: ResepType = {
     bahan: '', cara: '', id: 0, image: '', title: '', uid: ''
@@ -38,6 +41,14 @@ export default function ResepNormalPage() {
             autoplay: 0,
         },
     };
+
+    useEffect(() => {
+        // Code inside this block will only run in the browser environment
+        if (typeof window !== 'undefined') {
+            // Your browser-specific code here
+            console.log('This code runs in the browser environment');
+        }
+    }, []);
 
     useEffect(() => {
         onValue(query(resepNormalRef), (snapshot) => {
@@ -357,7 +368,7 @@ export default function ResepNormalPage() {
 
                         <div className="field">
                             <label htmlFor="soal">Bahan-Bahan Tutorial</label>
-                            <ReactQuill theme="snow" value={resep.bahan} onChange={(e) => setResep({ ...resep, bahan: e })} />
+                            <DynamicQuill theme="snow" value={resep.bahan} onChange={(e) => setResep({ ...resep, bahan: e })} />
                         </div>
 
                     </Dialog>

@@ -8,7 +8,6 @@ import { PickList } from "primereact/picklist";
 import { OrderList } from "primereact/orderlist";
 import { InputText } from "primereact/inputtext";
 import { Demo, LayoutType, SortOrderType } from "../../../types/demo";
-import { ProductService } from "../../../demo/service/ProductService";
 import { onValue, query, ref, remove, set } from "firebase/database";
 import { database, tipsMakananRef } from "../../../lib/firebase";
 import { TipsType } from "../../../types/TipsType";
@@ -53,10 +52,7 @@ export default function MakananPage() {
     };
 
     useEffect(() => {
-        ProductService.getProducts().then((data) => {
-            setDataViewValue(data);
-            setFilteredValue(data);
-        });
+
     }, []);
 
     useEffect(() => {

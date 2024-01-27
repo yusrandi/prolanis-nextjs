@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import { any } from 'prop-types';
 
-
-
-export default function DropZone({ file, setFile }: {
+interface DropZoneProps {
     file?: File;
-    setFile?: React.Dispatch<React.SetStateAction<File | undefined>>;
-}) {
+    setFile: React.Dispatch<React.SetStateAction<File | undefined>>;
+}
+
+
+export default function DropZone({ file, setFile }: DropZoneProps) {
 
     useEffect(() => {
         console.log('hello');
@@ -21,7 +22,6 @@ export default function DropZone({ file, setFile }: {
     const baseStyle = {
         flex: 1,
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
         padding: '20px',
         borderWidth: 2,

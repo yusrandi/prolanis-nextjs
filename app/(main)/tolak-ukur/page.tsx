@@ -32,7 +32,7 @@ export default function TolakUkurPage() {
   const toast = useRef<Toast>(null);
   const dt = useRef<DataTable<TolakUkurType[]>>(null);
 
-  const [file, setFile] = useState<File>()
+  const [file, setFile] = useState<File | undefined>();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [status, setStatus] = useState('create');

@@ -15,8 +15,11 @@ import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
 import DropZone from '../tolak-ukur/dropzone';
 
-import ReactQuill from 'react-quill';
+// import DynamicQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import dynamic from 'next/dynamic'
+
+const DynamicQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 
 const emptyNutrisi: NutrisiType = {
@@ -53,8 +56,6 @@ export default function NutrisiPage() {
     const [status, setStatus] = useState('create');
 
     const [value, setValue] = useState('');
-
-
 
 
     useEffect(() => {
@@ -390,27 +391,27 @@ export default function NutrisiPage() {
 
                         <div className="field">
                             <label htmlFor="">Definisi</label>
-                            <ReactQuill theme="snow" value={nutrisi.definisi} onChange={(e) => handleNutrisiChange('definisi', e)} />
+                            <DynamicQuill theme="snow" value={nutrisi.definisi} onChange={(e) => handleNutrisiChange('definisi', e)} />
                             <DropZone file={file!} setFile={setFile} />
                         </div>
                         <div className="field">
                             <label htmlFor="">Dianjurkan</label>
-                            <ReactQuill theme="snow" value={nutrisi.dianjurkan} onChange={(e) => handleNutrisiChange('dianjurkan', e)} />
+                            <DynamicQuill theme="snow" value={nutrisi.dianjurkan} onChange={(e) => handleNutrisiChange('dianjurkan', e)} />
                             <DropZone file={file!} setFile={setFile} />
                         </div>
                         <div className="field">
                             <label htmlFor="">Dibatasi</label>
-                            <ReactQuill theme="snow" value={nutrisi.dibatasi} onChange={(e) => handleNutrisiChange('dibatasi', e)} />
+                            <DynamicQuill theme="snow" value={nutrisi.dibatasi} onChange={(e) => handleNutrisiChange('dibatasi', e)} />
                             <DropZone file={file!} setFile={setFile} />
                         </div>
                         <div className="field">
                             <label htmlFor="">Dihindari</label>
-                            <ReactQuill theme="snow" value={nutrisi.dihindari} onChange={(e) => handleNutrisiChange('dihindari', e)} />
+                            <DynamicQuill theme="snow" value={nutrisi.dihindari} onChange={(e) => handleNutrisiChange('dihindari', e)} />
                             <DropZone file={file!} setFile={setFile} />
                         </div>
                         <div className="field">
                             <label htmlFor="">Kebutuhan</label>
-                            <ReactQuill theme="snow" value={nutrisi.kebutuhan} onChange={(e) => handleNutrisiChange('kebutuhan', e)} />
+                            <DynamicQuill theme="snow" value={nutrisi.kebutuhan} onChange={(e) => handleNutrisiChange('kebutuhan', e)} />
                             <DropZone file={file!} setFile={setFile} />
                         </div>
                     </Dialog>

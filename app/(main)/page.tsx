@@ -6,7 +6,6 @@ import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { Menu } from "primereact/menu";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { ProductService } from "../../demo/service/ProductService";
 import { LayoutContext } from "../../layout/context/layoutcontext";
 import Link from "next/link";
 import { Demo } from "../../types/types";
@@ -118,7 +117,6 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    ProductService.getProductsSmall().then((data) => setProducts(data));
   }, []);
 
   useEffect(() => {
@@ -291,9 +289,9 @@ const Dashboard = () => {
           </div>
           <ul className="list-none p-0 m-0">
             {
-              users.map((user) => {
+              users.map((user, index) => {
                 const randomNumber = getRandomInt(100)
-                return <li className="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4">
+                return <li className="flex flex-column md:flex-row md:align-items-center md:justify-content-between mb-4" key={index}>
                   <div>
                     <span className="text-900 font-medium mr-2 mb-1 md:mb-0">
                       {user.nama}
